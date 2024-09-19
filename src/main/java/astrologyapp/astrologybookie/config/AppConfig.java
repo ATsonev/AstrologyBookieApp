@@ -10,9 +10,7 @@ public class AppConfig {
 
     @Bean
     public RestTemplate restTemplate() {
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-        return restTemplate;
+        return new RestTemplate();
     }
 
 }
