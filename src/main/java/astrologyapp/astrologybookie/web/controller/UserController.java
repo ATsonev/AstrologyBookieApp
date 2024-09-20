@@ -25,4 +25,9 @@ public class UserController {
     public String login(){
         return "login";
     }
+
+    @GetMapping("/")
+    public String index(){
+        return "index";
+    }
 }
