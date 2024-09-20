@@ -1,32 +1,87 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en"><head>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
+<head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/css/style.css">
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-	<title>Title</title>
+	<title>Bookie</title>
+	<style>
+
+        .navbar-custom {
+            background-color: #98d6ff;
+            padding: 1rem;
+        }
+		.nav-link {
+            color: #0a2436;
+			font-size: 18px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: #2d739f;
+        }
+        .navbar-toggler {
+            border-color: #fff;
+        }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+        .navbar-nav .nav-item {
+            margin-right: 1rem;
+        }
+        .nav-link {
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+        .nav-link-login, .nav-link-logout {
+            color: #0a2436 !important;
+            border: none;
+            font-size: 18px;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-link-login:hover, .nav-link-logout:hover {
+            color: #2d739f !important;
+        }
+
+	</style>
 </head>
 <body>
 <header th:fragment="header">
-	<div class="header-content">
-		<button class="logo-button" onclick="window.location.href='/'"></button>
-		<div class="header-buttons">
-			<a href="/">Home</a>
-			<a href="/appointment">Book an appointment</a>
-			<a sec:authorize="isAuthenticated()" href="/my-appointments">My appointments</a>
-			<a href="/contacts">Contacts</a>
-			<a sec:authorize="isAnonymous()" href="/login">Login</a>
-			<a sec:authorize="isAnonymous()" href="/register">Register</a>
+	<nav class="navbar navbar-expand-lg navbar-custom">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a sec:authorize="isAuthenticated()" class="nav-link" href="/clients">Clients</a>
+				</li>
+				<li class="nav-item">
+					<a sec:authorize="isAuthenticated()" class="nav-link" href="/consultations">Consultations</a>
+				</li>
+				<li class="nav-item">
+					<a sec:authorize="isAuthenticated()" class="nav-link" href="/calendar">Calendar</a>
+				</li>
+			</ul>
 			<form id="logout-form" th:action="@{/logout}" method="post" style="display:none;"></form>
-			<div sec:authorize="isAuthenticated()" class="dropdown">
-				<a href="#" class="dropdown-toggle">Profile ▼</a>
-				<div class="dropdown-content">
-					<a href="/edit-profile">Edit Profile</a>
-					<a href="#" onclick="document.getElementById('logout-form').submit(); return false;">Logout</a>
-				</div>
-			</div>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a sec:authorize="!isAuthenticated()" class="nav-link nav-link-login" href="/login">Login</a>
+				</li>
+				<li class="nav-item">
+					<a sec:authorize="isAuthenticated()" class="nav-link nav-link-logout" href="#"
+					   onclick="document.getElementById('logout-form').submit(); return false;">Logout</a>
+				</li>
+			</ul>
 		</div>
-	</div>
+	</nav>
 </header>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

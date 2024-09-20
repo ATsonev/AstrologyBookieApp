@@ -1,6 +1,6 @@
 package astrologyapp.astrologybookie.service;
 
-import astrologyapp.astrologybookie.model.EditUserDto;
+import astrologyapp.astrologybookie.model.dto.EditUserDto;
 
 import java.util.List;
 

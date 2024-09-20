@@ -1,6 +1,6 @@
 package astrologyapp.astrologybookie.service.impl;
 
-import astrologyapp.astrologybookie.model.EditUserDto;
+import astrologyapp.astrologybookie.model.dto.EditUserDto;
 import astrologyapp.astrologybookie.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package astrologyapp.astrologybookie.model;
+package astrologyapp.astrologybookie.model.dto;
 
 public class EditUserDto {
     private String firstName;
